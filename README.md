@@ -81,7 +81,7 @@ By default, the backend will be running at `http://localhost:5023`.
 Change directory to the `TaskManagerUI` folder:
 
 ```bash
-cd ../task-manager-ui
+cd task-manager-ui
 ```
 
 #### Step 2: Install Frontend dependencies
