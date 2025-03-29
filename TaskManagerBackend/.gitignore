@@ -1,0 +1,28 @@
+# .NET build results
+bin/
+obj/
+
+# User-specific files
+.vscode/
+.idea/
+
+# ASP.NET Core environment files
+appsettings.Development.json
+appsettings.Production.json
+appsettings.json
+
+# Entity Framework Core
+*.db
+*.mdf
+*.ldf
+
+# Visual Studio for Mac
+.vscode/
+
+# .NET SDK and runtime files
+project.lock.json
+project.fragment.lock.json
+
+# Windows Installer files
+*.cab
+*.msi
