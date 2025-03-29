@@ -10,7 +10,57 @@ This project is a task management application built with **React** for the front
 4. **SQL Server** (or any database compatible with EF Core)
 
 ---
+## Architecture 
+Here’s the architecture of the files for the two main parts: **TaskManagerBackend** and **task-manager-ui**.
 
+### 1. **TaskManagerBackend** – Server Side
+On the server side, the file structure is as follows:
+
+- **TaskManagerBackend**
+  - **TaskManager.Data** – Contains models, migrations, and database context:
+    - `TaskItem.cs` – The model representing a task.
+    - `TasksDbContext.cs` – The DbContext file for database context.
+    - **Interfaces** – Contains the `ITaskRepository.cs` interface which defines data access operations.
+    - **Migrations** – The Entity Framework migration files.
+    - **Repositories** – Contains `TaskRepository.cs`, which implements data access.
+  
+  - **TaskManager.Infrastructure** – Implements configurations and dependency injection extensions:
+    - `ServiceCollectionExtensions.cs` – For adding services to DI.
+
+  - **TaskManager.Logic** – Business logic for the services:
+    - **Dto** – Data Transfer Objects like `TaskDto.cs`.
+    - **Exceptions** – Exception handling files such as `BadRequestException.cs` and `NotFoundException.cs`.
+    - **Interfaces** – Interfaces like `ITaskService.cs` that define the services.
+    - **Mapper** – `TaskMappingProfile.cs` that defines the mapping between models and DTOs.
+    - `TaskService.cs` – Implements the business logic for task-related operations.
+
+  - **TaskManager.Test** – Contains unit tests:
+    - `TaskRepositoryTests.cs` – Tests for `TaskRepository`.
+    - `TaskServiceTests.cs` – Tests for `TaskService`.
+
+### 2. **task-manager-ui** – Client Side (UI)
+On the client side, the file structure might look like this:
+
+- **task-manager-ui**
+  - **src/features/tasks/components** – Task components, for example:
+    - `TaskForm.tsx` – Form for task management.
+    - `TaskList.tsx` – Task listing component.
+  - **src/api** – Contains the API logic for interacting with tasks:
+    - `taskApi.ts` – Defines query API operations for tasks (create, update, delete).
+  - **src/store** – Redux store for managing state.
+  - **src/types** – Type definitions for tasks, for example:
+    - `task.ts` – Defines the `Task` type.
+  - **src/utils** – General utility functions, for example:
+    - `config.ts` – Configuration file.
+  - **public** – Public assets like images.
+  - **package.json** – Project dependencies.
+
+On the client-side, the main parts include API access, UI components (like `TaskForm` and `TaskList`), and the Redux store for managing state.
+
+### Summary:
+- **TaskManagerBackend** handles the business logic and data persistence (database access, RESTful services).
+- **task-manager-ui** provides the front-end user interface, which connects to the backend logic via API.
+---
 ## Setup Instructions
 
 #### Clone the repository
